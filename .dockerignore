@@ -2,10 +2,10 @@
 .git
 .gitignore
 
-#Docker
+# Docker
 .docker
 
-#Python
+# Python
 app/___pycache___/
 app/*/___pycache___/
 app/*/*/___pycache___/
