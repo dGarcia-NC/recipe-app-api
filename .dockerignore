@@ -6,10 +6,10 @@
 .docker
 
 # Python
-app/___pycache___/
-app/*/___pycache___/
-app/*/*/___pycache___/
-app/*/*/*/___pycache___/
+app/__pycache__/
+app/*/__pycache__/
+app/*/*/__pycache__/
+app/*/*/*/__pycache__/
 .env/
 .venv/
 venv/
