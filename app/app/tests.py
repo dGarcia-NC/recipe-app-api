@@ -1,5 +1,5 @@
 """
-Sample Tests
+Sample tests
 """
 from django.test import SimpleTestCase
 

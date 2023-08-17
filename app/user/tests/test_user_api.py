@@ -8,6 +8,7 @@ from django.urls import reverse
 from rest_framework.test import APIClient
 from rest_framework import status
 
+
 CREATE_USER_URL = reverse('user:create')
 TOKEN_URL = reverse('user:token')
 ME_URL = reverse('user:me')
@@ -39,7 +40,7 @@ class PublicUserApiTests(TestCase):
         self.assertNotIn('password', res.data)
 
     def test_user_with_email_exists_error(self):
-        """Test error return if user with email exists."""
+        """Test error returned if user with email exists."""
         payload = {
             'email': 'test@example.com',
             'password': 'testpass123',
@@ -55,7 +56,7 @@ class PublicUserApiTests(TestCase):
         payload = {
             'email': 'test@example.com',
             'password': 'pw',
-            'name': 'Test Name',
+            'name': 'Test name',
         }
         res = self.client.post(CREATE_USER_URL, payload)
 
@@ -68,11 +69,12 @@ class PublicUserApiTests(TestCase):
     def test_create_token_for_user(self):
         """Test generates token for valid credentials."""
         user_details = {
+            'name': 'Test Name',
             'email': 'test@example.com',
             'password': 'test-user-password123',
-            'name': 'Test Name',
         }
         create_user(**user_details)
+
         payload = {
             'email': user_details['email'],
             'password': user_details['password'],
@@ -83,7 +85,7 @@ class PublicUserApiTests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_200_OK)
 
     def test_create_token_bad_credentials(self):
-        """Test returns error if credentials are invalid"""
+        """Test returns error if credentials are invalid."""
         create_user(email='test@example.com', password='goodpass')
 
         payload = {'email': 'test@example.com', 'password': 'badpass'}
@@ -108,7 +110,7 @@ class PublicUserApiTests(TestCase):
 
 
 class PrivateUserApiTests(TestCase):
-    """Test API request that require authentication."""
+    """Test API requests that require authentication."""
 
     def setUp(self):
         self.user = create_user(
@@ -119,7 +121,7 @@ class PrivateUserApiTests(TestCase):
         self.client = APIClient()
         self.client.force_authenticate(user=self.user)
 
-    def test_retrieve_profile_sucess(self):
+    def test_retrieve_profile_success(self):
         """Test retrieving profile for logged in user."""
         res = self.client.get(ME_URL)
 

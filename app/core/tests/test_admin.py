@@ -1,5 +1,5 @@
 """
-Tests for the Django admin modifications
+Tests for the Django admin modifications.
 """
 from django.test import TestCase
 from django.contrib.auth import get_user_model
@@ -21,10 +21,10 @@ class AdminSiteTests(TestCase):
         self.user = get_user_model().objects.create_user(
             email='user@example.com',
             password='testpass123',
-            name='Test User',
+            name='Test User'
         )
 
-    def test_users_list(self):
+    def test_users_lists(self):
         """Test that users are listed on page."""
         url = reverse('admin:core_user_changelist')
         res = self.client.get(url)
