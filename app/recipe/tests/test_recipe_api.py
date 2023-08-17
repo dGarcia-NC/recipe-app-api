@@ -147,9 +147,10 @@ class PrivateRecipeAPITests(TestCase):
             link='https://example.com/recipe.pdf',
             description='Sample recipe description.',
         )
+
         payload = {
             'title': 'New recipe title',
-            'link': 'https://example.com/recipe-update.pdf',
+            'link': 'https://example.com/new-recipe.pdf',
             'description': 'New recipe description',
             'time_minutes': 10,
             'price': Decimal('2.50'),
@@ -180,7 +181,7 @@ class PrivateRecipeAPITests(TestCase):
         self.assertEqual(recipe.user, self.user)
 
     def test_delete_recipe(self):
-        """Test delete a recipe successful."""
+        """Test deleting a recipe successful."""
         recipe = create_recipe(user=self.user)
         url = detail_url(recipe.id)
         res = self.client.delete(url)

@@ -1,5 +1,5 @@
 """
-Test for the tags API.
+Tests for the tags API.
 """
 from django.contrib.auth import get_user_model
 from django.urls import reverse
@@ -9,6 +9,7 @@ from rest_framework import status
 from rest_framework.test import APIClient
 
 from core.models import Tag
+
 
 from recipe.serializers import TagSerializer
 
@@ -50,7 +51,6 @@ class PrivateTagsApiTests(TestCase):
 
         tags = Tag.objects.all().order_by('-name')
         serializer = TagSerializer(tags, many=True)
-
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)
 
@@ -58,7 +58,6 @@ class PrivateTagsApiTests(TestCase):
         """Test list of tags is limited to authenticated user."""
         user2 = create_user(email='user2@example.com')
         Tag.objects.create(user=user2, name='Fruity')
-
         tag = Tag.objects.create(user=self.user, name='Comfort Food')
 
         res = self.client.get(TAGS_URL)
