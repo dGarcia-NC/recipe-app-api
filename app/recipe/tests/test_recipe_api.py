@@ -49,7 +49,7 @@ def create_user(**params):
     return get_user_model().objects.create_user(**params)
 
 
-class PublicRecipeAPITests(TestCase):
+class PublicRecipeApiTests(TestCase):
     """Test unauthenticated API requests."""
 
     def setUp(self):
@@ -62,8 +62,9 @@ class PublicRecipeAPITests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
 
-class PrivateRecipeAPITests(TestCase):
+class PrivateRecipeApiTests(TestCase):
     """Test authenticated API requests."""
+
     def setUp(self):
         self.client = APIClient()
         self.user = create_user(email='user@example.com', password='test123')
@@ -113,7 +114,7 @@ class PrivateRecipeAPITests(TestCase):
         payload = {
             'title': 'Sample recipe',
             'time_minutes': 30,
-            'price': Decimal('5.99')
+            'price': Decimal('5.99'),
         }
         res = self.client.post(RECIPES_URL, payload)
 
@@ -157,13 +158,12 @@ class PrivateRecipeAPITests(TestCase):
             'description': 'New recipe description',
             'time_minutes': 10,
             'price': Decimal('2.50'),
-            }
+        }
         url = detail_url(recipe.id)
         res = self.client.put(url, payload)
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         recipe.refresh_from_db()
-
         for k, v in payload.items():
             self.assertEqual(getattr(recipe, k), v)
         self.assertEqual(recipe.user, self.user)
@@ -212,7 +212,7 @@ class PrivateRecipeAPITests(TestCase):
             'title': 'Thai Prawn Curry',
             'time_minutes': 30,
             'price': Decimal('2.50'),
-            'tags': [{'name': 'Thai'}, {'name': 'Dinner'}]
+            'tags': [{'name': 'Thai'}, {'name': 'Dinner'}],
         }
         res = self.client.post(RECIPES_URL, payload, format='json')
 
@@ -235,7 +235,7 @@ class PrivateRecipeAPITests(TestCase):
             'title': 'Pongal',
             'time_minutes': 60,
             'price': Decimal('4.50'),
-            'tags': [{'name': 'Indian'}, {'name': 'Breakfast'}]
+            'tags': [{'name': 'Indian'}, {'name': 'Breakfast'}],
         }
         res = self.client.post(RECIPES_URL, payload, format='json')
 
