@@ -1,30 +1,6 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ol>
-</details>
-
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -125,7 +101,7 @@ Run the following commands in the terminal:
 
 Hey there 👋. Here's what a GIF of my API docs put together using Swagger.
 
-![image](https://drive.google.com/uc?export=view&id=1gQrPbFVrpoXIvFRb5qarj56JZgoysDp7)
+![image](app/images-gif/theGIF.gif)
 
 ## List of Endpoints
 ### recipe
