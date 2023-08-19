@@ -95,7 +95,26 @@ Run the following commands in the terminal:
    docker-compose run --rm app sh -c "python manage.py createsuperuser"
    ```
 4. Visit [http://127.0.0.1:8000/api/docs](http://127.0.0.1:8000/api/docs) in your browser
-5. That should work
+
+### Make some requests to the backend
+1. Create a token by making a **POST** request to:
+   ```sh
+   /api/user/token
+   ```
+2. Copy the the token from the response
+3. Scroll to the top of the docs screen and click on the **Authorize** button
+4. Past the token to the value of the **tokenAuth (apiKey)** section and close that modal
+5. Make a **GET** request to:
+   ```sh
+   /api/recipe/recipes/
+   ```
+6. The response should be an empty Array since you haven't added a recipe yet
+7. Make a **POST** request to add a recipe:
+   ```sh
+   /api/recipe/recipes/
+   ```
+8. Repeat step 5 and you'll see the recipe you added
+9. Feel free to make additional request
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -104,7 +123,45 @@ Run the following commands in the terminal:
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Hey there 👋. Here's what a GIF of my API docs put together using Swagger.
+
+![image](https://drive.google.com/uc?export=view&id=1gQrPbFVrpoXIvFRb5qarj56JZgoysDp7)
+
+## List of Endpoints
+### recipe
+|Request Type|Endpoint Name|
+|---|---|
+|GET|​/api​/recipe​/ingredients​/|
+|PUT|​/api​/recipe​/ingredients​/{id}​/|
+|PATCH|/api​/recipe​/ingredients​/{id}​/|
+|DELETE|​/api​/recipe​/ingredients​/{id}​/|
+|GET|​/api​/recipe​/recipes​/|
+|POST|​/api​/recipe​/recipes​/
+|GET|​/api​/recipe​/recipes​/{id}​/|
+|PUT|​/api​/recipe​/recipes​/{id}​/|
+|PATCH|​/api​/recipe​/recipes​/{id}​/|
+|DELETE|/api​/recipe​/recipes​/{id}​/|
+|POST|​/api​/recipe​/recipes​/{id}​/upload-image​/|
+|GET|​/api​/recipe​/tags​/|
+|PUT|​/api​/recipe​/tags​/{id}​/|
+|PATCH|​/api​/recipe​/tags​/{id}​/|
+|DELETE|​/api​/recipe​/tags​/{id}​/|
+
+### schema
+|Request Type|Endpoint Name|
+|---|---|
+|GET|/api​/schema​/|
+
+### user
+|Request Type|Endpoint Name|
+|---|---|
+|POST|​/api​/user​/create​/|
+|GET|/api​/user​/me​/|
+|PUT|/api​/user​/me​/|
+|PATCH|​/api​/user​/me​/|
+|POST|​/api​/user​/token​/|
+
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
